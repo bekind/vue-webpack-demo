@@ -1,0 +1,26 @@
+
+.image-wrap img[data-v-fa5ac440] {
+    width: 100%;
+    height: auto;
+}
+.desp[data-v-fa5ac440] {
+    margin: 0 10px 10px;
+    padding-bottom: 10px;
+    border-bottom: #eee solid 1px;
+}
+.description[data-v-fa5ac440] {
+    color: #333;
+    font-size: 15px;
+    line-height: 25px;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+.author[data-v-fa5ac440] {
+    font-size: 15px;
+    line-height: 20px;
+    color: #999;
+}
