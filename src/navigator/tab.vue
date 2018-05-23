@@ -1,10 +1,11 @@
 <template>
     <div class="footer-tab">
         <ul class="tab-wrapper clearfix">
-            <li class="index active"><span></span>首页</li>
-            <li class="recommend"><span></span>推荐</li>
-            <li class="find"><span></span>发现</li>
-            <li class="setting"><span></span>设置</li>
+            <li v-for='(item, index) in tabs' 
+            :key='index' 
+            :class="[item.cls,{active: activeIndex==index}]" 
+            @click='tabClick(index)'>
+        <span></span>{{item.title}}</li>
         </ul>
     </div>
 </template>
@@ -98,7 +99,21 @@
 export default {
     name: 'foottab',
     data () {
-        return {}
+        return {
+            tabs: [
+                {title: '首页', cls: 'index'},
+                {title: '推荐', cls: 'recommend'},
+                {title: '发现', cls: 'find'},
+                {title: '设置', cls: 'setting'},
+            ],
+            activeIndex: 0
+        }
+    },
+    methods: {
+        tabClick (idx) {
+            this.activeIndex = idx;
+            this.$emit('tabclick',{idx: idx});
+        }
     }
 }
 </script>

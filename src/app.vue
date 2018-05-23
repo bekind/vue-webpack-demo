@@ -1,10 +1,15 @@
 <template>
     <div>
-        <div v-for="item in items" :key="item.id">
-            <itemtype4 :item='item' v-if='item.type==4'></itemtype4>
-            <itemtype6 :item='item' v-else-if='item.type==6'></itemtype6>
-        </div>
-        <foottab></foottab>
+        <section v-if='curIdx==0'>
+            <div v-for="item in items" :key="item.id">
+                <itemtype4 :item='item' v-if='item.type==4'></itemtype4>
+                <itemtype6 :item='item' v-else-if='item.type==6'></itemtype6>
+            </div>
+        </section>
+        <section v-else-if='curIdx==1' >
+            123
+        </section>
+        <foottab @tabclick='tabClicked'></foottab>
     </div>
 </template>
 
@@ -20,7 +25,8 @@ import api from './server/api.js'
 export default {
     data () {
         return {
-            items: []
+            items: [],
+            curIdx: 0
         }
     },
     components: {
@@ -37,6 +43,10 @@ export default {
             }
         })
     },
-    methods: {}
+    methods: {
+        tabClicked: function(data) {
+            this.curIdx = data.idx;
+        }
+    }
 }
 </script>
