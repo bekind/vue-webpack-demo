@@ -7,16 +7,22 @@
             </div>
         </section>
         <section v-else-if='curIdx==1' >
-            123
+            <div v-for="(item,index) in postItems" :key="index">
+                <itemtype :item='item.item' v-if='item.type==0'></itemtype>
+                <itemtype1 :item="item.item" v-if='item.type==1'></itemtype1>
+            </div>
         </section>
         <foottab @tabclick='tabClicked'></foottab>
     </div>
 </template>
 
 <style scoped>
+
 </style>
 
 <script>
+import itemtype from './content/itemtype.vue'
+import itemtype1 from './content/itemtype1.vue'
 import itemtype4 from './content/itemtype4.vue'
 import itemtype6 from './content/itemtype6.vue'
 import foottab from './navigator/tab.vue'
@@ -26,26 +32,54 @@ export default {
     data () {
         return {
             items: [],
+            postItems: [],
             curIdx: 0
         }
     },
     components: {
+        itemtype,
+        itemtype1,
         itemtype4,
         itemtype6,
         foottab
     },
     created () {
         var that = this;
-        api.get('recommend',{}, (res)=>{
-            if (res.meta.status == 200) {
-                var response = res.response;
-                that.items = response.list.slice(0,5);
-            }
-        })
+        that.getRecommend();
     },
     methods: {
-        tabClicked: function(data) {
+        tabClicked (data) {
             this.curIdx = data.idx;
+            switch(this.curIdx) {
+                case 0:
+                    this.getRecommend();
+                    break;
+                case 1:
+                    this.getPostItems();
+                    break;
+                case 2: 
+                    break;
+            }
+        },
+        getRecommend () {
+            var that = this;
+            if (that.items.length>0) return;
+            api.get('recommend',{}, (res)=>{
+                if (res.meta.status == 200) {
+                    var response = res.response;
+                    that.items = response.list;
+                }
+            });
+        },
+        getPostItems () {
+            var that = this;
+            if (that.postItems.length>0) return;
+            api.get('domainpost',{}, (res)=>{
+                if (res.meta.status == 200) {
+                    var response = res.response;
+                    that.postItems = response.items;
+                }
+            });
         }
     }
 }
