@@ -22,7 +22,8 @@
 .footer-tab {
     width: 100%;
     height: 64px;
-    position: fixed;
+    position: absolute;
+    left: 0;
     bottom: 0;
     background: #eee;
 }
