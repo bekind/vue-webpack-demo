@@ -12,6 +12,7 @@
                     <itemtype :item='item.item' v-if='item.type==0'></itemtype>
                     <itemtype1 :item="item.item" v-if='item.type==1'></itemtype1>
                     <itemtype5 :item="item.item" v-if='item.type==5'></itemtype5>
+                    <itemtype16 :item="item.item" v-if='item.type==6'></itemtype16>
                 </div>
             </section>
         </div>
@@ -32,6 +33,7 @@
 
 <script>
 import itemtype from './content/itemtype.vue'
+import itemtype16 from './content/itemtype1_6.vue'
 import itemtype1 from './content/itemtype1.vue'
 import itemtype4 from './content/itemtype4.vue'
 import itemtype5 from './content/itemtype5.vue'
@@ -53,6 +55,7 @@ export default {
         itemtype4,
         itemtype5,
         itemtype6,
+        itemtype16,
         foottab
     },
     created () {
