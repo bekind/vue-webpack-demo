@@ -15,10 +15,11 @@
                 <p class="tags" v-if='item.post.tagList.length'><em>#</em><span v-for='tag in item.post.tagList' :key="tag">{{tag}}</span></p>
             </div>
             <div class="menu">
-                <span class="like"></span>
+                <span :class="['like',{'active':like}]" @click.stop='likeClick'></span>
+                <!-- <span :class="['like',{'active':item.zan}]" @click.stop='zanClick'></span> -->
                 <span class="message"></span>
                 <span class="send"></span>
-                <span class="zan"></span>
+                <span :class="['zan',{active: zan}]" @click.stop='zanClick'></span>
                 <span class="more"></span>
             </div>
             <div class="comments">
@@ -34,6 +35,12 @@
 export default {
     name: 'itemtype5',
     props: ['item'],
+    data () {
+        return {
+            like: false,
+            zan: false
+        }
+    },
     methods: {
         getMiddleSize (post) {
             if (post.firstImageUrl) {
@@ -43,6 +50,12 @@ export default {
                 }
             }
             return post.firstSmallImageUrl;
+        },
+        likeClick (item) {
+            this.like = !this.like;
+        },
+        zanClick (item) {
+            this.zan = !this.zan;
         }
     }
 }
