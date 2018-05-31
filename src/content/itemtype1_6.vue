@@ -25,6 +25,7 @@ export default {
     color: #333;
 }
 .avatar-info {
+    color: #333;
     background: #fff;
     height: 100%;
     display: flex;
