@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>唛斯基</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="../dist/main.css" />
-    <style>
-        body {
-            margin: 0 0;
-        }
-        ul, li {
-            list-style: none;
-            display: list-item;
-        }
-    </style>
 </head>
+
 <body>
-    <div id='main'></div>
+    <!-- 使用 router-link 组件来导航. -->
+    <!-- 通过传入 `to` 属性指定链接. -->
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+    <div id='main'>
+        <!-- <router-link to="/foo">foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link> -->
+        <!-- <router-link to="/index">Go to index</router-link> -->
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+
+        <div class="footer-tab">
+            <ul class="tab-wrapper clearfix">
+                <router-link :to="path.path" v-for='(path, index) in paths'>
+                    <li :class="[path.cls,{active: path.active}]" @click='tabClicked(index)'>
+                        <span></span>{{path.title}}</li>
+                </router-link>
+            </ul>
+        </div>
+    </div>
 </body>
 <script src="../dist/bundle.js"></script>
+
 </html>
