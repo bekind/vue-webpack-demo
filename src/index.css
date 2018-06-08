@@ -12,6 +12,9 @@ a,a:hover,a:active,a:visited,a:link,a:focus{
     background: none;
     text-decoration: none;
 }
+[v-cloak] {
+    display: none;
+}
 
 .clearfix:after {
     clear: both;
@@ -71,27 +74,38 @@ a,a:hover,a:active,a:visited,a:link,a:focus{
     margin: auto;
     position: relative;
 }
+.router-link-active li {
+    color: #d81e06;
+}
 .tab-wrapper li.index span {
     background: url('./icon/home.png') no-repeat;
     background-size: 24px 24px;
 }
-.tab-wrapper li.index.active span{
+.router-link-active li.index span{
     background: url('./icon/home-active.png') no-repeat;
     background-size: 24px 24px;
 }
+/* .tab-wrapper li.index.active span{
+    background: url('./icon/home-active.png') no-repeat;
+    background-size: 24px 24px;
+} */
 .tab-wrapper li.recommend span {
     background: url('./icon/brand.png') no-repeat;
     background-size: 24px 24px;
 }
-.tab-wrapper li.recommend.active span{
+.router-link-active li.recommend span{
     background: url('./icon/brand-active.png') no-repeat;
     background-size: 24px 24px;
 }
+/* .tab-wrapper li.recommend.active span{
+    background: url('./icon/brand-active.png') no-repeat;
+    background-size: 24px 24px;
+} */
 .tab-wrapper li.find span {
     background: url('./icon/focus.png') no-repeat;
     background-size: 24px 24px;
 }
-.tab-wrapper li.find.active span{
+.router-link-active li.find span{
     background: url('./icon/focus-active.png') no-repeat;
     background-size: 24px 24px;
 }
@@ -99,7 +113,7 @@ a,a:hover,a:active,a:visited,a:link,a:focus{
     background: url('./icon/set.png') no-repeat;
     background-size: 24px 24px;
 }
-.tab-wrapper li.setting.active span{
+.router-link-active li.setting span{
     background: url('./icon/set-active.png') no-repeat;
     background-size: 24px 24px;
 }

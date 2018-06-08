@@ -41,6 +41,7 @@ export default {
     created () {
         var that = this;
         that.getPostItems();
+        console.log(this.$router.params)
     },
     methods: {
         getPostItems () {

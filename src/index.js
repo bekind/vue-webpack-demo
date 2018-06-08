@@ -31,6 +31,8 @@ const routes = [
     { path: '/', component: index },
     { path: '/index', component: index },
     { path: '/recommend', component: recommend },
+    { path: '/find', component: recommend },
+    { path: '/setting', component: recommend }
   ]
   
   // 3. 创建 router 实例，然后传 `routes` 配置
@@ -47,18 +49,13 @@ new Vue({
   data: {
     current: 0,
     paths: [
-      { title: '首页', cls: 'index', active: true, path: '/index' },
-      { title: '推荐', cls: 'recommend', active: false, path: '/recommend' },
-      { title: '发现', cls: 'find', active: false, path: '/recommend' },
-      { title: '设置', cls: 'setting', active: false, path: '/recommend' },
+      { title: '首页', cls: 'index', path: '/index' },
+      { title: '推荐', cls: 'recommend', path: '/recommend' },
+      { title: '发现', cls: 'find', path: '/find' },
+      { title: '设置', cls: 'setting', path: '/setting' },
     ]
   },
   methods: {
-    tabClicked(index) {
-      this.paths[this.current].active = false;
-      this.paths[index].active = true;
-      this.current = index;
-    }
   }
 }).$mount('#main')
   
